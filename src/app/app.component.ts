@@ -11,4 +11,6 @@ import { AppConfig } from './forms-io.config';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {}
+export class AppComponent {
+  exampleFormUrl = 'https://example.form.io/wizard';
+}
