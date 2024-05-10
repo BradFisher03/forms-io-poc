@@ -12,5 +12,27 @@ import { AppConfig } from './forms-io.config';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  exampleFormUrl = 'https://example.form.io/wizard';
+  exampleFormUrl = {
+    display: 'wizard',
+    components: [
+      {
+        title: 'Page 1',
+        label: 'Page 1',
+        type: 'panel',
+        key: 'page1',
+        components: [
+          {
+            label: 'Text Field',
+            applyMaskOn: 'change',
+            tableView: true,
+            key: 'textField',
+            type: 'textfield',
+            input: true,
+          },
+        ],
+        input: false,
+        tableView: false,
+      },
+    ],
+  };
 }
