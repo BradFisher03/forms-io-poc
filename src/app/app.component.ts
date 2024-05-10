@@ -14,6 +14,12 @@ import { AppConfig } from './forms-io.config';
 export class AppComponent {
   exampleFormUrl = {
     display: 'wizard',
+    settings: {
+      pdf: {
+        id: '1ec0f8ee-6685-5d98-a847-26f67b67d6f0',
+        src: 'https://files.form.io/pdf/5692b91fd1028f01000407e3/file/1ec0f8ee-6685-5d98-a847-26f67b67d6f0',
+      },
+    },
     components: [
       {
         title: 'Page 1',
@@ -120,29 +126,30 @@ export class AppComponent {
                 input: true,
               },
               {
-                label: 'Continue and Save',
+                label: 'Continue & Save',
+                action: 'event',
                 showValidations: false,
                 tableView: false,
-                key: 'continueAndSave',
+                key: 'continueSave',
                 logic: [
                   {
-                    name: 'Open Personal Details Panel',
+                    name: 'openPersonalDetails',
                     trigger: {
                       type: 'event',
-                      event: 'Test',
+                      event: 'openPersonalDetails',
                     },
                     actions: [
                       {
-                        name: 'Open Next Panel',
+                        name: 'openPersonalDetails',
                         type: 'customAction',
                         customAction:
-                          'console.log(form);\nconsole.log(component);',
+                          "console.log(form);\nconsole.log(utils.getComponent(form.components, 'personalDetails'));",
                       },
                     ],
                   },
                 ],
                 type: 'button',
-                saveOnEnter: false,
+                event: 'openPersonalDetails',
                 input: true,
               },
             ],
@@ -317,4 +324,8 @@ export class AppComponent {
       },
     ],
   };
+
+  handleCustomEvent(event: any) {
+    console.log(event);
+  }
 }
